@@ -28,3 +28,16 @@ position:relative;
 .containerhome {
   width: 100%;
 }
+
+.card {
+  border-radius: 15px;
+  background-color: #F6F6EB;
+}
+
+div.col:nth-child(even) > .card {
+  background-color: #ebeade;
+}
+
+.homegrid {
+  margin: 10px;
+}
