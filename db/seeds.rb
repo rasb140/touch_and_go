@@ -13,7 +13,7 @@ puts "Users are destroyed"
 rodrigo = User.create({ first_name: "Rodrigo", last_name: "Borges", email: "rodrigo@rodrigo.com", password: "purpose" })
 puts "Rodrigo is created"
 
-plane = Airplane.new({ brand_and_model: "GULFSTREAM G700", weight: 48_806, registration: "N700GS", range: 7_500, speed: "MACH 0.90", max_altitude: 51_000, number_of_engines: 2, pax_capacity: 10, address: "Red Square, Moscow" })
+plane = Airplane.new({ brand_and_model: "GULFSTREAM G700", weight: 48_806, registration: "N700GS", range: 7_500, speed: "MACH 0.90", max_altitude: 51_000, number_of_engines: 2, pax_capacity: 10, address: "Ponta Delgada, Azores" })
 plane.user = rodrigo
 plane.photos.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'gulfstream G700.jpg')), filename: 'gulfstream G700.jpg', content_type: 'image/jpeg')
 plane.save
