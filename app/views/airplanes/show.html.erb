@@ -1,30 +1,50 @@
 <div class="container">
-  <div class="container-carousel">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <% @airplane.photos.each_with_index do |photo, index| %>
-          <% active = index == 0 ? "active" : "" %>
-          <div class="carousel-item <%= active %>" data-bs-interval="10000">
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class:"d-block" %>
-            <div class="carousel-caption d-none d-md-block">
-              <h2 class="light-text shadow-text">Amazing</h2>
-              <h3 class="light-text shadow-text"><%= @airplane.brand_and_model %></h3>
+  <% if false %>
+    <div class="container-carousel">
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @airplane.photos.each_with_index do |photo, index| %>
+            <% active = index == 0 ? "active" : "" %>
+            <div class="carousel-item <%= active %>" data-bs-interval="10000">
+              <%= cl_image_tag photo.key, height: 300, width: 400, class:"d-block" %>
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="light-text shadow-text"><%= @airplane.brand_and_model %></h3>
+              </div>
             </div>
-          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  <div class="airplane-card">
+    <div class="card-header">
+      <%= cl_image_tag @airplane.photos.first.key, class:"d-block" %>
+    </div>
+    <div class="card-body">
+      <h4>
+        <%= @airplane.brand_and_model %>
+      </h4>
+      <div class= "specs">
+        <p><b>Weight:</b>  <%= @airplane.weight %> kgs </p>
+        <p><b>Registration:</b> <%= @airplane.registration %></p>
+        <p><b>Range:</b> <%= @airplane.range %> Nautical Miles </p>
+        <p><b>Speed:</b> <%= @airplane.speed %> Knots or MACH</p>
+        <p><b>Max Altitude:</b> <%= @airplane.max_altitude %> feet</p>
+        <p><b>Number of Engines:</b> <%= @airplane.number_of_engines %></p>
+        <p><b>Passenger Capacity:</b> <%= @airplane.pax_capacity %></p>
+        <p><b>Current Location:</b> <%= @airplane.address %></p>
+      </div>
+      <div class="airplanes-buttons">
+        <%if @can_edit_airplane %>
+          <%= link_to "Edit", edit_airplane_path(@airplane.id), class: "secondary-button" %>
         <% end %>
+        <%= link_to "Back", airplanes_path, class: "secondary-button" %>
       </div>
     </div>
   </div>
-  <div class="container-button">
-    <%= link_to "Back", airplanes_path, class: "btn btn-gradient", id:"middle-button" %>
-    <%if @can_edit_airplane %>
-      <%= link_to "Edit", edit_airplane_path(@airplane.id), class: "btn btn-gradient" %>
-    <% end %>
-  </div>
 
-  <div class= "specs">
-    <p><b>weight:</b>  <%= @airplane.weight %> kgs </p>
-  </div>
+
 
   <% if user_signed_in? %>
     <div class="container-text">
@@ -34,14 +54,14 @@
       <div class="container-map" style="width: 600px; height: 300px;"
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      data-map-api-key-value="sk.eyJ1IjoicmFzYjE0MCIsImEiOiJjbGM5YWx2bGgxMDdtM3BwMjQzZTFuenlzIn0._KU4On6bi6QFJH-3d0HEMw">
       </div>
       <div class="container-booking">
         <%= render "bookings/form", airplane: @airplane, booking: @booking %>
       </div>
     </div>
   <% else %>
-    <p>You must log in to book an airplane.</p>
+  <div class="must-login"><h2>You must <a class="no-underline" href="/users/sign_in">login</a> to book an airplane.</h2></div>
   <% end %>
 
 
