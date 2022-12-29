@@ -19,11 +19,17 @@ position:relative;
 }
 
 .homegrid {
- display:grid;
- grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
- grid-gap: 16px;
- z-index: 10;
+  margin-left: 18%;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  margin: 25px;
 }
+
+.homegrid-card {
+  margin: 10px;
+}
+
 
 .containerhome {
   width: 100%;
@@ -36,8 +42,4 @@ position:relative;
 
 div.col:nth-child(even) > .card {
   background-color: #ebeade;
-}
-
-.homegrid {
-  margin: 10px;
 }

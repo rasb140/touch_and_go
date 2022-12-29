@@ -10,18 +10,20 @@
   <% if @airplanes != [] %>
     <div class="homegrid">
       <% @airplanes.each do |airplane| %>
-        <div class="col">
-          <div class="card">
+        <div class="homegrid-card">
+          <div class="airplane-card">
+            <div class="card-header">
+              <%= cl_image_tag airplane.photos.first.key, class:"d-block" %>
+            </div>
             <div class="card-body">
-              <% unless airplane.photos.first.nil? %>
-                <%= cl_image_tag airplane.photos.first.key, class:"card-img-top" %>
-              <% end %>
-              <h5 class="card-title"> <%= airplane.brand_and_model %></h5>
+              <h4>
+                <%= airplane.brand_and_model %>
+              </h4>
               <p class="card-list"> <%= airplane.registration %></p>
-              <p> <%= airplane.user.first_name %> <%=  airplane.user.last_name %>
-                <%= link_to "More infos about that plane", airplane_path(airplane.id) %>
+              <%= link_to "Book this Airplane", airplane_path(airplane.id) %>
             </div>
           </div>
+
         </div>
       <% end %>
     </div>

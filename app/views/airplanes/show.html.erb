@@ -46,20 +46,34 @@
 
   <% if user_signed_in? %>
     <div class="container-text">
-      <h1>You can now book this plane!</h1>
+      <h2>You can now book this plane!</h2>
     </div>
     <div class="container-map-booking">
-      <div class="container-map" style="width: 600px; height: 300px;"
+      <div class="container-map" style="width: 400px; height: 300px;"
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
+    </div>
+    <div class="container-map-booking">
       <div class="container-booking">
         <%= render "bookings/form", airplane: @airplane, booking: @booking %>
       </div>
     </div>
   <% else %>
-  <div class="must-login"><h2>You must <a class="no-underline" href="/users/sign_in">login</a> to book an airplane.</h2></div>
+      <div class="container-map-booking">
+      <div class="container-map" style="width: 400px; height: 300px;"
+      data-controller="map"
+      data-map-markers-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+    <div class="container-map-booking">
+      <div class="container-booking">
+        <%= render "bookings/form", airplane: @airplane, booking: @booking %>
+      </div>
+    </div>
+    <div class="must-login"><h2>You must <a class="no-underline" href="/users/sign_in">login</a> to book an airplane.</h2></div>
   <% end %>
 
 
