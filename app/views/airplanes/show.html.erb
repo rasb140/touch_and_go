@@ -44,8 +44,6 @@
     </div>
   </div>
 
-
-
   <% if user_signed_in? %>
     <div class="container-text">
       <h1>You can now book this plane!</h1>
@@ -54,7 +52,7 @@
       <div class="container-map" style="width: 600px; height: 300px;"
       data-controller="map"
       data-map-markers-value="<%= @marker.to_json %>"
-      data-map-api-key-value="sk.eyJ1IjoicmFzYjE0MCIsImEiOiJjbGM5YWx2bGgxMDdtM3BwMjQzZTFuenlzIn0._KU4On6bi6QFJH-3d0HEMw">
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
       <div class="container-booking">
         <%= render "bookings/form", airplane: @airplane, booking: @booking %>
