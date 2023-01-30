@@ -12,6 +12,7 @@ class Airplane < ApplicationRecord
   validates :speed, presence: true
   validates :max_altitude, presence: true
   validates :address, presence: true
+  validates :daily_price, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 

@@ -43,3 +43,23 @@ position:relative;
 div.col:nth-child(even) > .card {
   background-color: #ebeade;
 }
+
+.price {
+  background: linear-gradient(to right,#16213e ,#23449d);
+  background-color: #16213e;
+  border-radius: 50%;
+  text-align: center;
+  height: 125px;
+  width: 125px;
+  margin: auto;
+  color: white;
+  font-size: 24px;
+  padding-top: 30px;
+  border: solid 4px #ffca03;
+  margin-bottom: 5px;
+}
+
+.starting {
+  font-weight: bold;
+  font-size: 20px;
+}

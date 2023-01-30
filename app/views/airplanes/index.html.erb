@@ -20,10 +20,11 @@
                 <%= airplane.brand_and_model %>
               </h4>
               <p class="card-list"> <%= airplane.registration %></p>
-              <%= link_to "Book this Airplane", airplane_path(airplane.id) %>
+              <div class="starting"></div>
+              <div class="price">$ <%= airplane.daily_price/1000.ceil %>K <div class="day">/day</div></div>
+              <%= link_to "Book this Airplane", airplane_path(airplane.id), class: "secondary-button secondary-button-centered"%>
             </div>
           </div>
-
         </div>
       <% end %>
     </div>
